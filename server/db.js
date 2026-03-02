@@ -84,6 +84,13 @@ await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_salt TEXT DEFA
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_hash TEXT DEFAULT '';`);
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
 
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_salt TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_hash TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+
+await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (email);`);
 // уникальность email (если ещё нет)
 await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (email);`);
 
