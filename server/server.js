@@ -1,4 +1,3 @@
-const API = "https://market-backend-if6s.onrender.com";
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -12,7 +11,6 @@ const { db, init, pool } = require("./db");
 const app = express();
 
 
-const cors = require("cors");
 
 app.use(cors({
   origin: [
