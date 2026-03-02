@@ -65,7 +65,7 @@
   }
 
   async function loadMe(){
-    const res = await MarketAPI.apifetch(`${window.API}/api/auth/me");
+    const res = await MarketAPI.apifetch(window.API + "/api/auth/me");
     if (!res.ok) return null;
     const data = await res.json().catch(()=>null);
     return data?.user || null;
@@ -109,14 +109,14 @@
     try{
       // PATCH предпочитаем, но если окружение не пропускает PATCH (или сервер старый) —
       // пробуем POST как запасной вариант, чтобы не ловить 404.
-      let res = await MarketAPI.apifetch(`${window.API}/api/profile", {
+      let res = await MarketAPI.apifetch(window.API + "/api/profile", {
         method: "PATCH",
         headers: { "Content-Type":"application/json" },
         body: JSON.stringify(payload),
       });
 
       if (res.status === 404){
-        res = await MarketAPI.apifetch(`${window.API}/api/profile", {
+        res = await MarketAPI.apifetch(window.API + "/api/profile", {
           method: "POST",
           headers: { "Content-Type":"application/json" },
           body: JSON.stringify(payload),
@@ -156,7 +156,7 @@
 
     // persist in DB (если залогинен)
     try{
-      const res = await MarketAPI.apifetch(`${window.API}/api/profile", {
+      const res = await MarketAPI.apifetch(window.API + "/api/profile", {
         method: "PATCH",
         headers: { "Content-Type":"application/json" },
         body: JSON.stringify({ theme: next })
@@ -178,7 +178,7 @@
     saveBtn?.setAttribute("disabled", "true");
 
     try{
-      const res = await MarketAPI.apifetch(`${window.API}/api/profile/avatar", {
+      const res = await MarketAPI.apifetch(window.API + "/api/profile/avatar", {
         method: "POST",
         body: fd
       });
@@ -237,7 +237,7 @@
   });
 
   logoutBtn?.addEventListener("click", async () => {
-    try { await MarketAPI.apifetch(`${window.API}/api/auth/logout", { method:"POST" }); } catch {}
+    try { await MarketAPI.apifetch(window.API + "/api/auth/logout", { method:"POST" }); } catch {}
     MarketAPI.setToken("");
     window.location.href = "index.html";
   });

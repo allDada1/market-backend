@@ -19,7 +19,7 @@ function loadCart(){
 function saveCart(cart){ localStorage.setItem("market_cart", JSON.stringify(cart)); }
 
 async function getProductsMap(){
-  const r = await fetch(`${window.API}/api/products");
+  const r = await fetch(window.API + "/api/products");
   const list = await r.json();
   return new Map(list.map(p => [p.id, p]));
 }

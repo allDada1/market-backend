@@ -6,7 +6,7 @@
   }
 
   try{
-    const res = await fetch(`${window.API}/api/auth/me", { headers:{ Authorization:"Bearer " + token } });
+    const res = await fetch(window.API + "/api/auth/me", { headers:{ Authorization:"Bearer " + token } });
     if (!res.ok){
       localStorage.removeItem("market_token");
       localStorage.removeItem("market_session");

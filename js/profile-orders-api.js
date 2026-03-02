@@ -15,7 +15,7 @@
   if (!ordersList) return;
 
   async function loadMyOrders(){
-    const res = await MarketAPI.apifetch(`${window.API}/api/orders/my");
+    const res = await MarketAPI.apifetch(window.API + "/api/orders/my");
     if (res.status === 401) return { error:"unauthorized", orders:[] };
     if (!res.ok) return { error:"server_error", orders:[] };
     const data = await res.json().catch(()=>[]);

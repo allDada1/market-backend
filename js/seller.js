@@ -135,7 +135,7 @@
     const t = getTokenAny();
     if (!t) return null;
 
-    const r = await fetch(`${window.API}/api/auth/me", {
+    const r = await fetch(window.API + "/api/auth/me", {
       headers: { Authorization: "Bearer " + t }
     });
 

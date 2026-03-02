@@ -150,7 +150,7 @@ async function loadFavorites(){
     location.href = "login.html";
     return;
   }
-  const res = await MarketAPI.apifetch(`${window.API}/api/favorites");
+  const res = await MarketAPI.apifetch(window.API + "/api/favorites");
   if (!res.ok){
     location.href = "login.html";
     return;

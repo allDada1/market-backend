@@ -56,7 +56,7 @@
     }
 
     try {
-      const r = await fetch(`${window.API}/api/auth/me", {
+      const r = await fetch(window.API + "/api/auth/me", {
         headers: { Authorization: "Bearer " + t }
       });
       if (!r.ok) {

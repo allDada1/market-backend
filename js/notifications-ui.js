@@ -45,7 +45,7 @@
       setBadge(0);
       return;
     }
-    const r = await MarketAPI.apifetch(`${window.API}/api/notifications");
+    const r = await MarketAPI.apifetch(window.API + "/api/notifications");
     if (!r.ok){
       panel.innerHTML = `<div class="notifEmpty">Не удалось загрузить уведомления.</div>`;
       return;
@@ -78,7 +78,7 @@
         const id = Number(el.dataset.id);
         const link = el.dataset.link || "";
         try {
-          await MarketAPI.apifetch(`${window.API}/api/notifications/read", {
+          await MarketAPI.apifetch(window.API + "/api/notifications/read", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ids: [id] })
@@ -106,7 +106,7 @@
     clearBtn.addEventListener("click", async (e) => {
       e.stopPropagation();
       if (!isLoggedIn()) return;
-      const r = await MarketAPI.apifetch(`${window.API}/api/notifications/clear", { method: "POST" });
+      const r = await MarketAPI.apifetch(window.API + "/api/notifications/clear", { method: "POST" });
       if (r.ok) refresh();
     });
   }
