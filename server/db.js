@@ -131,4 +131,18 @@ await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (ema
   `);
 }
 
+// если старая колонка password_hash существует — удаляем её
+await pool.query(`
+  DO $$
+  BEGIN
+    IF EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_name='users' AND column_name='password_hash'
+    ) THEN
+      ALTER TABLE users DROP COLUMN password_hash;
+    END IF;
+  END
+  $$;
+`);
+
 module.exports = { db, init, pool };
