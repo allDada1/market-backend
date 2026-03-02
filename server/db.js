@@ -40,6 +40,7 @@ const db = {
 };
 
 async function init() {
+  // 1) Таблицы (если их вообще нет)
   await pool.query(`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
@@ -47,9 +48,7 @@ async function init() {
       email TEXT UNIQUE NOT NULL,
       pass_salt TEXT NOT NULL,
       pass_hash TEXT NOT NULL,
-      is_admin BOOLEAN DEFAULT FALSE,
-      nickname TEXT DEFAULT '',
-      avatar_url TEXT DEFAULT ''
+      is_admin BOOLEAN DEFAULT FALSE
     );
   `);
 
@@ -65,14 +64,48 @@ async function init() {
     CREATE TABLE IF NOT EXISTS products (
       id SERIAL PRIMARY KEY,
       title TEXT NOT NULL,
-      description TEXT DEFAULT '',
-      price INT NOT NULL,
-      stock INT DEFAULT 0,
-      category TEXT DEFAULT '',
-      image_url TEXT DEFAULT '',
-      tile_slug TEXT DEFAULT '',
-      section TEXT DEFAULT '',
-      owner_user_id INT REFERENCES users(id)
+      price INT NOT NULL
+    );
+  `);
+
+  // 2) “Догоняем” колонки, если таблицы уже были созданы раньше в другом виде
+  // users
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS nickname TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+
+  // products
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS description TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS stock INT DEFAULT 0;`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS category TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS image_url TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS tile_slug TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS section TEXT DEFAULT '';`);
+  await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS owner_user_id INT REFERENCES users(id);`);
+
+  // optional tables for likes/ratings/follows (твой код их дергает, ошибки там глушатся, но лучше создать)
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS product_likes (
+      user_id INT REFERENCES users(id) ON DELETE CASCADE,
+      product_id INT REFERENCES products(id) ON DELETE CASCADE,
+      PRIMARY KEY (user_id, product_id)
+    );
+  `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS product_ratings (
+      user_id INT REFERENCES users(id) ON DELETE CASCADE,
+      product_id INT REFERENCES products(id) ON DELETE CASCADE,
+      rating INT NOT NULL,
+      PRIMARY KEY (user_id, product_id)
+    );
+  `);
+
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS seller_follows (
+      follower_user_id INT REFERENCES users(id) ON DELETE CASCADE,
+      seller_user_id INT REFERENCES users(id) ON DELETE CASCADE,
+      PRIMARY KEY (follower_user_id, seller_user_id)
     );
   `);
 }
