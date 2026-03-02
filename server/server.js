@@ -10,15 +10,20 @@ const { db, init, pool } = require("./db");
 // init() is awaited at the bottom before listen
 
 const app = express();
+
+
 const cors = require("cors");
 
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://firstmarkettest.netlify.app"
+    "http://localhost:5173",
+    "https://firstmarkettest.netlify.app",
+    "https://market-backend-if6s.onrender.com"
   ],
   credentials: true
 }));
+
 app.use(express.json());
 
 // --- static site root ---

@@ -68,6 +68,10 @@ async function init() {
     );
   `);
 
+
+  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
+
+  
   // 2) “Догоняем” колонки, если таблицы уже были созданы раньше в другом виде
   // users
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS nickname TEXT DEFAULT '';`);
