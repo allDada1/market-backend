@@ -1,4 +1,4 @@
-
+export const API = "https://market-backend-if6s.onrender.com";
 // utils.js — общие утилиты для проекта Market
 // - Без зависимостей
 // - Экспортирует window.MarketUtils

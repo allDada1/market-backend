@@ -841,4 +841,3 @@ if (ui.catRemoveIconBtn){
     setNote(ui.catNote, "Иконка удалена (будет показан emoji).");
   });
 }
-

@@ -41,7 +41,7 @@ async function loadLikedIds(){
   likedIds = new Set();
   if (!token()) return;
   try{
-    const res = await MarketAPI.apifetch(window.API + "/api/favorites");
+    const res = await MarketAPI.apiFetch(window.API + "/api/favorites");
     if (!res.ok) return;
     const list = await res.json().catch(()=>[]);
     likedIds = new Set((list||[]).map(p => Number(p.id)).filter(n => Number.isFinite(n)));
@@ -86,7 +86,6 @@ function addToCart(id){
   cart[k] = (Number(cart[k])||0) + 1;
   saveCart(cart);
   updateCartBadge();
-  await loadLikedIds();
 }
 
 function getCatFromUrl(){
