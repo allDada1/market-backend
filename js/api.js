@@ -1,3 +1,6 @@
+// base url для backend (Render)
+window.API = window.API || "https://market-backend-if6s.onrender.com";
+
 const MarketAPI = {
   getToken(){
     // основной ключ
