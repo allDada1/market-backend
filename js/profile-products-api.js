@@ -36,7 +36,7 @@
   }
 
   async function load(){
-    const res = await MarketAPI.apiFetch("/api/profile/products");
+    const res = await MarketAPI.apifetch(`${window.API}/api/profile/products");
     if (res.status === 401) return { error:"unauthorized", products:[] };
     if (!res.ok) return { error:"server_error", products:[] };
     const data = await res.json().catch(()=>({products:[]}));

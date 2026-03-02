@@ -10,7 +10,7 @@
   }
 
   async function loadTiles(){
-    const res = await fetch("/api/categories");
+    const res = await fetch(`${window.API}/api/categories");
     if (!res.ok) return [];
     return await res.json();
   }

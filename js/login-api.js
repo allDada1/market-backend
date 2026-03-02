@@ -1,3 +1,4 @@
+import { API } from "./utils.js";
 const emailEl = document.getElementById("email");
 const passEl  = document.getElementById("password");
 const btn     = document.getElementById("loginSubmit");
@@ -16,7 +17,7 @@ btn?.addEventListener("click", async (e) => {
     return;
   }
 
-  const res = await fetch("/api/auth/login", {
+  const res = await fetch(`${API}/api/login`, {
     method:"POST",
     headers:{ "Content-Type":"application/json" },
     body: JSON.stringify({ email, password })

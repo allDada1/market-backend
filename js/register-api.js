@@ -17,7 +17,7 @@ btn?.addEventListener("click", async (e) => {
   if (!email.includes("@")){ setMsg("Email некорректный."); return; }
   if (password.length < 6){ setMsg("Пароль минимум 6 символов."); return; }
 
-  const res = await fetch("/api/auth/register", {
+  const res = await fetch(`${window.API}/api/auth/register", {
     method:"POST",
     headers:{ "Content-Type":"application/json" },
     body: JSON.stringify({ name, email, password })

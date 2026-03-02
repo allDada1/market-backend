@@ -41,7 +41,7 @@ async function loadLikedIds(){
   likedIds = new Set();
   if (!token()) return;
   try{
-    const res = await MarketAPI.apiFetch("/api/favorites");
+    const res = await MarketAPI.apifetch(`${window.API}/api/favorites");
     if (!res.ok) return;
     const list = await res.json().catch(()=>[]);
     likedIds = new Set((list||[]).map(p => Number(p.id)).filter(n => Number.isFinite(n)));
@@ -96,7 +96,7 @@ function getCatFromUrl(){
 }
 
 async function apiGetAllProducts(){
-  const res = await fetch("/api/products");
+  const res = await fetch(`${window.API}/api/products");
   if (!res.ok) throw new Error("api_failed");
   return await res.json();
 }

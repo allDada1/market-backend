@@ -111,7 +111,7 @@
   }
 
   async function loadTile(slug) {
-    const res = await fetch("/api/categories");
+    const res = await fetch(`${window.API}/api/categories");
     const list = await res.json().catch(() => []);
     return list.find((x) => String(x.slug) === slug) || null;
   }

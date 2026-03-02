@@ -9,7 +9,7 @@
   }
 
   async function load(){
-    const res = await fetch("/api/category-groups");
+    const res = await fetch(`${window.API}/api/category-groups");
     if (!res.ok) return [];
     return await res.json();
   }

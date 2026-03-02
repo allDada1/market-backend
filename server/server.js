@@ -1,3 +1,4 @@
+const API = "https://market-backend-if6s.onrender.com";
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -9,7 +10,15 @@ const { db, init, pool } = require("./db");
 // init() is awaited at the bottom before listen
 
 const app = express();
-app.use(cors());
+const cors = require("cors");
+
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://firstmarkettest.netlify.app"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // --- static site root ---

@@ -53,7 +53,7 @@ async function loadLikedIds(){
   likedIds = new Set();
   if (!token()) return;
   try{
-    const res = await MarketAPI.apiFetch("/api/favorites");
+    const res = await MarketAPI.apifetch(`${window.API}/api/favorites");
     if (!res.ok) return;
     const list = await res.json().catch(()=>[]);
     likedIds = new Set((list||[]).map(p => Number(p.id)).filter(n => Number.isFinite(n)));
@@ -108,7 +108,7 @@ function addToCart(id){
 // -------- auth/menu --------
 async function loadMe(){
   if (!token()) { me = null; updateTopUserUI(); return; }
-  const res = await MarketAPI.apiFetch("/api/auth/me");
+  const res = await MarketAPI.apifetch(`${window.API}/api/auth/me");
   if (!res.ok){ me = null; updateTopUserUI(); return; }
   const data = await res.json().catch(()=>({}));
   me = data.user || null;
@@ -127,10 +127,10 @@ function updateTopUserUI(){
 
 // -------- categories chips (groups) --------
 async function loadCategories(){
-  const res = await fetch("/api/category-groups");
+  const res = await fetch(`${window.API}/api/category-groups");
   if (!res.ok) {
     // fallback: старый способ из товаров
-    const list = await fetch("/api/products").then(r=>r.json()).catch(()=>[]);
+    const list = await fetch(`${window.API}/api/products").then(r=>r.json()).catch(()=>[]);
     const cats = Array.from(new Set(list.map(x=>x.category).filter(Boolean)));
     allCategories = ["Все", ...cats];
     renderChips();
@@ -162,7 +162,7 @@ function renderChips(){
 
 async function apiGetProducts(){
   // всегда грузим список (с лайками/рейтингом)
-  const res = await MarketAPI.apiFetch("/api/products");
+  const res = await MarketAPI.apifetch(`${window.API}/api/products");
   if (!res.ok) throw new Error("api_products_failed");
   let list = await res.json();
 
@@ -205,7 +205,7 @@ async function apiGetProducts(){
 }
 
 async function apiGetAllProducts(){
-  const res = await MarketAPI.apiFetch("/api/products");
+  const res = await MarketAPI.apifetch(`${window.API}/api/products");
   if (!res.ok) return [];
   return await res.json();
 }
