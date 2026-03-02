@@ -225,10 +225,10 @@ app.post("/api/auth/register", async (req, res) => {
   try {
     // Insert user and get id (Postgres needs RETURNING)
     const rUser = await pool.query(
-      `INSERT INTO users (name, email, pass_salt, pass_hash, is_admin)
-       VALUES ($1, $2, $3, $4, false)
+      `INSERT INTO users (name, email, pass_salt, pass_hash, password_hash, is_admin)
+       VALUES ($1, $2, $3, $4, $5, false)
        RETURNING id`,
-      [name, email, salt, passHash]
+      [name, email, salt, passHash, passHash]
     );
     const userId = rUser.rows[0].id;
 

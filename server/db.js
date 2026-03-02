@@ -76,7 +76,7 @@ async function init() {
   // users
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS nickname TEXT DEFAULT '';`);
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT DEFAULT '';`);
-  await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+
 // users — догоняем базовые колонки для auth
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
@@ -84,13 +84,7 @@ await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_salt TEXT DEFA
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_hash TEXT DEFAULT '';`);
 await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
 
-await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
-await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
-await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_salt TEXT DEFAULT '';`);
-await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_hash TEXT DEFAULT '';`);
-await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
 
-await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (email);`);
 // уникальность email (если ещё нет)
 await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (email);`);
 
@@ -131,18 +125,5 @@ await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (ema
   `);
 }
 
-// если старая колонка password_hash существует — удаляем её
-await pool.query(`
-  DO $$
-  BEGIN
-    IF EXISTS (
-      SELECT 1 FROM information_schema.columns
-      WHERE table_name='users' AND column_name='password_hash'
-    ) THEN
-      ALTER TABLE users DROP COLUMN password_hash;
-    END IF;
-  END
-  $$;
-`);
 
 module.exports = { db, init, pool };
