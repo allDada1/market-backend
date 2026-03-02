@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Профиль</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+      <div class="topbar__actions">
+        <a class="linkBtn" href="cart.html">Корзина</a>
+        <button class="btn" id="logoutBtn" type="button">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container profWrap">
+    <section class="profCard">
+      <div class="profTop">
+        <div class="avatar">👤</div>
+        <div>
+          <div class="profName" id="profileName">—</div>
+          <div class="profEmail" id="profileEmail">—</div>
+        </div>
+      </div>
+
+      <div class="profGrid">
+          <a class="tile" id="adminTile" href="admin.html" style="display:none;">
+          <div class="tile__t">Админ товары</div>
+          <div class="tile__s">Добавлять/удалять товары</div>
+        </a>
+
+        <a class="tile" href="index.html">
+          <div class="tile__t">Каталог</div>
+          <div class="tile__s">Вернуться на главную</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="ordersBlock" id="ordersBlock">
+      <div class="ordersTop">
+        <div class="ordersTitle">Мои заказы</div>
+        <button class="btn" id="refreshOrdersBtn" type="button">Обновить</button>
+      </div>
+
+      <div class="ordersEmpty" id="ordersEmpty" hidden>
+        Пока заказов нет
+      </div>
+
+      <div class="ordersList" id="ordersList"></div>
+    </section>
+  </main>
+
+  <!-- порядок критичен -->
+  <script src="js/auth-guard.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/profile-orders-api.js"></script>
+  <script src="js/notifications-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Заказ оформлен</title>
+  <link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+      <div class="muted">Успешно</div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:26px 0;">
+    <section class="card" style="padding:18px; border-radius:22px;">
+      <h1 style="margin:0 0 10px;">Заказ оформлен ✅</h1>
+      <div class="muted" id="orderInfo">Номер заказа: —</div>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn btn--primary" href="profile.html">В профиль</a>
+        <a class="btn" href="index.html">На главную</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const sp = new URLSearchParams(location.search);
+    const id = sp.get("id");
+    document.getElementById("orderInfo").textContent = "Номер заказа: " + (id ? "#" + id : "—");
+  </script>
+</body>
+</html>

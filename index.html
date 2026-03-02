@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<div id="headerMount"></div>
+<div id="subbarMount"></div>
+
+<section class="container catShowcase" id="catShowcase">
+  <!-- JS нарисует 2+ секции: Игры / Приложения -->
+</section>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__left">
+      <div class="hero__title">Каталог</div>
+      <div class="hero__sub">Разные товары для разных целей</div>
+      <div class="metaText" id="resultMeta">Товаров:</div>
+      <div class="sortRow" id="sortRow" hidden>
+  <!-- <div class="sortLabel">Сортировка</div>
+  <select class="sortSelect" id="sortSelect">
+    <option value="new_desc">Сначала новые</option>
+    <option value="price_asc">Цена: по возрастанию</option>
+    <option value="price_desc">Цена: по убыванию</option>
+    <option value="likes_desc">По лайкам</option>
+    <option value="rating_desc">По рейтингу</option>
+  </select> -->
+</div>
+
+    </div>
+
+    <div class="hero__right">
+      <div class="chips" id="categoryChips"></div>
+    </div>
+  </section>
+
+  <section class="grid" id="productsGrid"></section>
+  <section class="container popWrap" id="popularWrap" hidden>
+  <div class="popHead">
+    <div class="popTitle">Популярное</div>
+    <div class="popSub">Возможно вам понравится</div>
+  </div>
+
+  <div class="popBlock">
+    <div class="popBlock__title">Топ по лайкам</div>
+    <div class="popRow" id="popularLiked"></div>
+  </div>
+
+  <div class="popBlock">
+    <div class="popBlock__title">Топ по рейтингу</div>
+    <div class="popRow" id="popularRated"></div>
+  </div>
+</section>
+
+  <section class="empty" id="emptyState" hidden>
+    <div class="empty__title">Ничего не найдено</div>
+    <div class="empty__sub">Попробуйте другой запрос или выбери другую категорию</div>
+    <button class="btn btn--primary" id="resetBtn" type="button">Сбросить</button>
+  </section>
+</main>
+
+<footer class="siteFooter">
+  <div class="container siteFooter__grid">
+    <div>
+      <div class="siteFooter__brand">Market</div>
+      <div class="muted">Дипломный проект • MVP маркетплейса</div>
+      <div class="muted">v1</div>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="/about/about.html">О сайте</a>
+      <a class="siteFooter__a" href="/about/how.html">Как работает</a>
+      <a class="siteFooter__a" href="/about/rules.html">Правила</a>
+      <a class="siteFooter__a" href="/about/partners.html">Партнёрам</a>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="/about/support.html">Поддержка</a>
+      <a class="siteFooter__a" href="/about/faq.html">FAQ</a>
+      <a class="siteFooter__a" href="/about/support-chat.html">Чат поддержки</a>
+      <a class="siteFooter__a" href="/about/report.html">Сообщить о проблеме</a>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="/about/documents.html">Документы</a>
+      <a class="siteFooter__a" href="/about/privacy.html">Политика конфиденциальности</a>
+      <a class="siteFooter__a" href="/about/terms.html">Пользовательское соглашение</a>
+    </div>
+  </div>
+
+  <div class="container siteFooter__bottom">
+    <div class="muted">© Store, 2026</div>
+    <div class="muted">Контакты: supportstore@gmail.com</div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/core/auth.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/dropdowns.js"></script>
+<script src="js/categories-bar.js"></script>
+<script src="js/subbar-cats.js"></script>
+<script src="js/categories-showcase.js"></script>
+<script src="js/app.js"></script>
+<script src="js/notifications-ui.js"></script>
+
+</body>
+</html>

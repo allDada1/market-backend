@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Плитка</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<div id="headerMount"></div>
+<div id="subbarMount"></div>
+
+<main class="container" style="padding-top:18px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+    <div>
+      <div id="tileTitle" style="font-size:22px;font-weight:800;">Плитка</div>
+      <div id="tileSub" class="muted" style="margin-top:6px;">Загрузка…</div>
+    </div>
+  </div>
+
+  <div id="resultMeta" class="muted" style="margin:12px 0 10px 0;"></div>
+  <div id="productsGrid" class="grid"></div>
+
+  <div id="emptyState" class="muted" style="margin:18px 0; display:none;">
+    Тут пока нет товаров в этой плитке.
+  </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/core/auth.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/tile.js"></script>
+<script src="js/notifications-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Вход</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+      <div class="muted">Вход</div>
+    </div>
+  </header>
+
+  <main class="container authWrap">
+    <section class="authCard">
+      <h1 class="authTitle">Вход</h1>
+      <p class="authSub">Войди, чтобы открыть профиль и оформить заказ</p>
+
+      <div class="field">
+        <div class="label">Email</div>
+        <input class="input" id="email" placeholder="example@mail.com" />
+      </div>
+
+      <div class="field">
+        <div class="label">Пароль</div>
+        <input class="input" id="password" type="password" placeholder="••••••" />
+      </div>
+
+      <div class="row">
+        <button class="btn btn--primary" id="loginSubmit" type="button">Войти</button>
+        <a class="btn" href="register.html">Регистрация</a>
+      </div>
+
+      <div class="msg" id="loginMsg"></div>
+    </section>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/login-api.js"></script>
+</body>
+</html>

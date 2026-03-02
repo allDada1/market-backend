@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Как работает</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/home.css" />
+  <style>
+    .docWrap{ padding: 18px 0 34px; }
+    .docCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      border-radius: 22px;
+      padding: 18px;
+    }
+    .docCard h1{ margin:0 0 8px; font-size: 22px; }
+    .docCard h2{ margin:18px 0 8px; font-size: 15px; opacity:.95; }
+    .docCard p, .docCard li{ color: rgba(255,255,255,.82); }
+    .docCard .muted{ color: rgba(255,255,255,.62); }
+    .docGrid{ display:grid; gap:10px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); margin-top: 14px; }
+    .docLink{
+      display:block; padding: 12px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      text-decoration:none; color: rgba(255,255,255,.88);
+      transition: .16s ease;
+    }
+    .docLink:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+    .docForm{ display:grid; gap:10px; margin-top: 12px; }
+    .docForm input, .docForm textarea, .docForm select{
+      width:100%; padding: 10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.88);
+      outline:none;
+    }
+    .docForm textarea{ min-height: 120px; resize: vertical; }
+    .chatBox{
+      height: 360px; overflow:auto;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      padding: 12px;
+    }
+    .msg{ max-width: 82%; padding: 10px 12px; border-radius: 18px; margin: 8px 0;
+      border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.05);
+    }
+    .msg--me{ margin-left:auto; background: rgba(120,190,255,.10); }
+    .msg__meta{ font-size:12px; opacity:.70; margin-bottom:6px; }
+    .chatRow{ display:grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container topbar__inner topbar__playerok">
+    <a class="brand" href="../index.html">
+      <span class="brand__dot"></span>
+      <span class="brand__name">DarkMarket</span>
+    </a>
+
+    <nav class="topNav">
+      <a class="topNav__a" href="../index.html">Каталог</a>
+      <a class="topNav__a" href="support.html" id="helpLink">Поддержка</a>
+    </nav>
+
+    <div class="topbar__actions">
+      <button class="iconBtn" id="cartBtn" type="button" title="Корзина">
+        🛒 <span class="badge" id="cartBadge" hidden>0</span>
+      </button>
+
+      <div class="dropdown userDrop" id="userDrop">
+        <button class="iconBtn dropdown__btn" type="button" id="profileBtn" title="Профиль">
+          👤 <span id="profileLabel">Войти</span>
+        </button>
+        <div class="dropdown__panel dropdown__panel--right">
+          <a href="../profile.html" id="goProfile">Профиль</a>
+          <a href="../admin-products.html" id="goAdmin" style="display:none;">Админ товары</a>
+          <a href="../login.html" id="goLogin">Вход</a>
+          <a href="../register.html" id="goReg">Регистрация</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container docWrap">
+  <section class="docCard">
+    <h1>Как работает</h1>
+    <ol>
+      <li>На главной странице показываются плитки (категории).</li>
+      <li>Клик по плитке открывает страницу: <code>../tile.html?slug=...</code></li>
+      <li>Страница плитки грузит товары по API: <code>/api/tiles/:slug/products</code></li>
+      <li>Товар попадает в плитку, если <code>products.tile_slug === categories.slug</code>.</li>
+      <li>Корзина хранится в <code>localStorage</code> (ключ <code>market_cart</code>).</li>
+    </ol>
+
+    <div class="docGrid">
+      <a class="docLink" href="faq.html">FAQ</a>
+      <a class="docLink" href="support.html">Поддержка</a>
+      <a class="docLink" href="report.html">Сообщить о проблеме</a>
+    </div>
+
+  </section>
+</main>
+<footer class="siteFooter">
+  <div class="container siteFooter__grid">
+    <div>
+      <div class="siteFooter__brand">Market</div>
+      <div class="muted">Дипломный проект • MVP маркетплейса</div>
+      <div class="muted">v1</div>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="about.html">О сайте</a>
+      <a class="siteFooter__a" href="how.html">Как работает</a>
+      <a class="siteFooter__a" href="rules.html">Правила</a>
+      <a class="siteFooter__a" href="partners.html">Партнёрам</a>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="support.html">Поддержка</a>
+      <a class="siteFooter__a" href="faq.html">FAQ</a>
+      <a class="siteFooter__a" href="support-chat.html">Чат поддержки</a>
+      <a class="siteFooter__a" href="report.html">Сообщить о проблеме</a>
+    </div>
+
+    <div>
+      <a class="siteFooter__h" href="documents.html">Документы</a>
+      <a class="siteFooter__a" href="privacy.html">Политика конфиденциальности</a>
+      <a class="siteFooter__a" href="terms.html">Пользовательское соглашение</a>
+    </div>
+  </div>
+
+  <div class="container siteFooter__bottom">
+    <div class="muted">© Market, 2026</div>
+    <div class="muted">Контакты: support@market.local</div>
+  </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/api.js"></script>
+<script>
+(function(){
+  // cart badge
+  const badge = document.getElementById("cartBadge");
+  if (window.MarketUtils && badge) MarketUtils.updateCartBadge(badge, { hideWhenZero: true });
+
+  // nav buttons
+  const cartBtn = document.getElementById("cartBtn");
+  if (cartBtn) cartBtn.addEventListener("click", () => location.href = "../cart.html");
+
+  // dropdown toggles
+  function wireDropdown(rootId){
+    const root = document.getElementById(rootId);
+    if (!root) return;
+    const btn = root.querySelector(".dropdown__btn");
+    if (!btn) return;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      root.classList.toggle("is-open");
+    });
+  }
+  wireDropdown("userDrop");
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown.is-open").forEach(d => d.classList.remove("is-open"));
+  });
+
+  // profile link behavior (simple)
+  let tokenOk = false;
+  try { tokenOk = !!(window.MarketAPI && typeof MarketAPI.getToken === "function" && MarketAPI.getToken()); } catch {}
+  let sessionOk = false;
+  try { const s = JSON.parse(localStorage.getItem("market_session")||"null"); sessionOk = !!(s && (s.id || s.email || s.name)); } catch {}
+  const isLoggedIn = tokenOk || sessionOk;
+  const profileBtn = document.getElementById("profileBtn");
+  const profileLabel = document.getElementById("profileLabel");
+  const goProfile = document.getElementById("goProfile");
+  const goLogin = document.getElementById("goLogin");
+  const goReg = document.getElementById("goReg");
+  if (profileLabel) profileLabel.textContent = isLoggedIn ? "Профиль" : "Войти";
+  if (goProfile) goProfile.style.display = isLoggedIn ? "" : "none";
+  if (goLogin) goLogin.style.display = isLoggedIn ? "none" : "";
+  if (goReg) goReg.style.display = isLoggedIn ? "none" : "";
+  if (profileBtn) profileBtn.addEventListener("click", () => {
+    location.href = isLoggedIn ? "../profile.html" : "../login.html";
+  });
+})();
+</script>
+
+</body>
+</html>

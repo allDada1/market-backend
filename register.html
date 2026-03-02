@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Регистрация</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+      <div class="muted">Регистрация</div>
+    </div>
+  </header>
+
+  <main class="container authWrap">
+    <section class="authCard">
+      <h1 class="authTitle">Регистрация</h1>
+      <p class="authSub">Создай аккаунт — дальше можно добавить телефон, адреса и т.д.</p>
+
+      <div class="field">
+        <div class="label">Имя</div>
+        <input class="input" id="name" placeholder="Дада" />
+      </div>
+
+      <div class="field">
+        <div class="label">Email</div>
+        <input class="input" id="email" placeholder="example@mail.com" />
+      </div>
+
+      <div class="field">
+        <div class="label">Пароль</div>
+        <input class="input" id="password" type="password" placeholder="минимум 6 символов" />
+      </div>
+
+      <div class="row">
+        <button class="btn btn--primary" id="registerSubmit" type="button">Создать</button>
+        <a class="btn" href="login.html">Уже есть аккаунт</a>
+      </div>
+
+      <div class="msg" id="registerMsg"></div>
+    </section>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/register-api.js"></script>
+</body>
+</html>

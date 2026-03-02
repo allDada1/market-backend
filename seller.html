@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Магазин продавца</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+<body>
+
+<div id="headerMount"></div>
+<div id="subbarMount"></div>
+
+<main class="container page">
+  <div class="sellerHead">
+    <div class="sellerHead__avatar" id="sellerAvatar"></div>
+    <div class="sellerHead__info">
+      <div class="sellerHead__name" id="sellerName">Загрузка…</div>
+      <div class="sellerHead__meta" id="sellerMeta"></div>
+    </div>
+
+    <!-- 6.3: follow/unfollow seller (shown/controlled by js/seller.js) -->
+    <button class="btn btn--primary" id="followBtn" type="button" hidden>Подписаться</button>
+  </div>
+
+  <div class="rowBetween">
+    <div class="muted" id="resultMeta"></div>
+    <div class="muted" id="sellerStats"></div>
+  </div>
+
+  <section class="grid" id="productsGrid"></section>
+  <div class="empty" id="emptyState" hidden>
+    <div class="empty__title">Товаров нет</div>
+    <div class="empty__text">У этого продавца пока нет объявлений или они скрыты.</div>
+  </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/core/auth.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/seller.js"></script>
+</body>
+</html>

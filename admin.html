@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Админ</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar__inner topbar__playerok">
+    <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+    <div class="topSearch">
+      <input placeholder="Админ панель (товары + категории)" disabled />
+      <button class="topSearch__clear" type="button" onclick="location.href='profile.html'">↩</button>
+    </div>
+    <div class="topbar__actions">
+      <a class="linkBtn" href="index.html">Главная</a>
+      <a class="linkBtn" href="profile.html">Профиль</a>
+    </div>
+  </div>
+</header>
+
+<main class="container admWrap">
+
+  <!-- ===== Категории (плитки) ===== -->
+  <section class="admCard">
+    <h1 class="admTitle">Категории (плитки)</h1>
+    <div class="muted" id="admGuardText">Проверка доступа…</div>
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Раздел</div>
+        <select class="input" id="catSection">
+          <option value="Игры">Игры</option>
+          <option value="Приложения">Приложения</option>
+          <option value="Мобильные игры">Мобильные игры</option>
+        </select>
+      </div>
+      <div class="field">
+        <div class="label">Название плитки</div>
+        <input class="input" id="catTitle" placeholder="Steam" />
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Slug (уникально)</div>
+        <input class="input" id="catSlug" placeholder="steam" />
+      </div>
+      <div class="field">
+        <div class="label">Emoji</div>
+        <input class="input" id="catEmoji" placeholder="🕹️" />
+      </div>
+    </div>
+
+<div class="field">
+  <div class="label">Иконка плитки (файл)</div>
+  <div class="uploadBox" id="catUploadBox">
+    <div class="muted">Перетащи файл сюда или нажми “Выбрать”</div>
+    <div class="row" style="margin-top:10px;">
+      <button class="btn" id="catPickBtn" type="button">Выбрать файл</button>
+      <button class="btn" id="catRemoveIconBtn" type="button">Удалить иконку</button>
+      <input type="file" id="catFileInput" accept="image/*" hidden />
+      <div class="muted" id="catIconText">Иконка не выбрана</div>
+    </div>
+    <img id="catIconPreview" alt="" style="display:none;margin-top:10px;width:92px;height:92px;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.10);" />
+  </div>
+</div>
+
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Порядок (sort)</div>
+        <input class="input" id="catSort" placeholder="10" inputmode="numeric" />
+      </div>
+      <div class="field">
+        <div class="label">Активна</div>
+        <select class="input" id="catActive">
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="btn btn--primary" id="catAddBtn" type="button">Добавить плитку</button>
+      <button class="btn" id="catReloadBtn" type="button">Обновить список</button>
+      <button class="btn" id="catSaveOrderBtn" type="button">Сохранить порядок</button>
+      <button class="btn" id="catCancelEditBtn" type="button" style="display:none;">Отмена</button>
+      <div class="muted" id="catNote"></div>
+    </div>
+
+    <div class="list" id="catList"></div>
+  </section>
+
+  <!-- ===== Товары ===== -->
+  <section class="admCard">
+    <h1 class="admTitle">Товары</h1>
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Раздел</div>
+        <select class="input" id="prodSection">
+          <option value="Игры">Игры</option>
+          <option value="Приложения">Приложения</option>
+          <option value="Мобильные игры">Мобильные игры</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="label">Плитка (категория)</div>
+        <select class="input" id="prodTile"></select>
+        <!-- <div class="muted" style="margin-top:6px;">Это та плитка, по которой будут находиться товары.</div> -->
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Название</div>
+        <input class="input" id="title" placeholder="God of War" />
+      </div>
+      <div class="field">
+        <div class="label">Цена</div>
+        <input class="input" id="price" inputmode="numeric" placeholder="17900" />
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <div class="label">Описание</div>
+        <input class="input" id="description" placeholder="Ключ / аккаунт / товар" />
+      </div>
+      <div class="field">
+        <div class="label">Наличие (stock)</div>
+        <input class="input" id="stock" inputmode="numeric" placeholder="1" />
+      </div>
+    </div>
+
+    <!-- фото -->
+    <div class="field">
+      <div class="label">Фото (файл)</div>
+      <div class="uploadBox" id="uploadBox">
+        <div class="muted">Перетащи файл сюда или нажми “Выбрать”</div>
+        <div class="row" style="margin-top:10px;">
+          <button class="btn" id="pickFileBtn" type="button">Выбрать файл</button>
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <div class="muted" id="imageUrlText">Фото не выбрано</div>
+        </div>
+        <img id="previewImg" alt="" style="display:none;margin-top:10px;width:220px;border-radius:16px;border:1px solid rgba(255,255,255,.10);" />
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="btn btn--primary" id="prodSaveBtn" type="button">Добавить</button>
+      <button class="btn" id="prodReloadBtn" type="button">Обновить список</button>
+      <button class="btn" id="prodCancelBtn" type="button">Сброс</button>
+      <div class="muted" id="prodNote"></div>
+    </div>
+
+    <div class="list" id="prodList"></div>
+  </section>
+
+</main>
+
+<script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

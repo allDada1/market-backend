@@ -1,0 +1,281 @@
+.profWrap{ padding:20px 0 28px; display:grid; gap:14px; }
+.profCard{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+}
+
+.profTop{ display:flex; gap:12px; align-items:center; }
+.profWho{ display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
+.avatar{
+  width:52px; height:52px; border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  display:grid; place-items:center;
+  font-size:20px;
+}
+.profName{ font-weight:950; font-size:18px; }
+.profEmail{ color:rgba(255,255,255,.66); }
+
+.profGrid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:10px;
+}
+@media (max-width: 720px){ .profGrid{ grid-template-columns:1fr; } }
+
+.tile{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  border-radius:20px;
+  padding:14px;
+  transition:.16s ease;
+}
+.tile:hover{ transform: translateY(-1px); background:rgba(255,255,255,.06); }
+.tile__t{ font-weight:950; }
+.tile__s{ color:rgba(255,255,255,.66); margin-top:4px; font-size:12px; }
+
+.ordersBlock{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+}
+.ordersTop{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.ordersTitle{ font-weight:950; font-size:16px; }
+.ordersEmpty{ color:rgba(255,255,255,.66); padding:12px 0; }
+
+.ordersList{ display:grid; gap:10px; margin-top:10px; }
+
+.order{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  border-radius:20px;
+  overflow:hidden;
+}
+.order__top{
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  cursor:pointer;
+}
+.order__id{ font-weight:950; }
+.order__meta{ color:rgba(255,255,255,.66); font-size:12px; margin-top:3px; }
+.order__sum{ font-weight:950; text-align:right; }
+.pill{
+  margin-top:6px;
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.80);
+  font-size:12px;
+}
+.order__details{ padding:0 12px 12px; display:none; }
+.order.is-open .order__details{ display:block; }
+
+.detailGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:6px;
+}
+@media (max-width: 720px){ .detailGrid{ grid-template-columns:1fr; } }
+
+.detailBox{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  border-radius:18px;
+  padding:12px;
+}
+.detailBox__t{ font-weight:950; font-size:12px; color:rgba(255,255,255,.86); }
+.detailBox__v{ margin-top:6px; color:rgba(255,255,255,.70); font-size:12px; line-height:1.45; }
+
+.items{ margin-top:10px; }
+.itemRow{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.76);
+}
+.itemRow b{ color:rgba(255,255,255,.92); }
+
+
+/* ===== icon / switch in header + profile ===== */
+.iconBtn{
+  width:40px; height:40px;
+  display:grid; place-items:center;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  color:rgba(255,255,255,.92);
+  cursor:pointer;
+  transition:.16s ease;
+}
+.iconBtn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.06); }
+
+.themeSwitch{
+  width:54px; height:34px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  position:relative;
+  cursor:pointer;
+  transition:.16s ease;
+}
+.themeSwitch__knob{
+  position:absolute;
+  top:50%; left:6px;
+  width:22px; height:22px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.10);
+  transform: translateY(-50%);
+  transition:.18s ease;
+}
+/* когда light => knob справа */
+html[data-theme="light"] .themeSwitch__knob{ left: calc(100% - 6px - 22px); }
+
+/* ===== profile editor ===== */
+.profNickLine{ color: rgba(255,255,255,.74); font-size:12px; margin-top:2px; }
+.muted{ color: rgba(255,255,255,.62); }
+
+#avatarBox{ cursor:pointer; overflow:hidden; }
+#avatarImg{ width:100%; height:100%; object-fit:cover; border-radius:18px; }
+.profEdit{ margin-top:14px; border-top:1px solid rgba(255,255,255,.08); padding-top:14px; }
+.profEdit__row{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; }
+@media (max-width: 720px){ .profEdit__row{ grid-template-columns:1fr; } }
+
+.field{ display:block; }
+.field__t{ font-size:12px; color:rgba(255,255,255,.66); margin-bottom:6px; }
+.field__i{
+  width:100%;
+  padding:10px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  color:rgba(255,255,255,.92);
+  outline:none;
+}
+.field__i:focus{ border-color: rgba(120,190,255,.35); }
+
+.profEdit__actions{ display:flex; align-items:center; gap:10px; margin-top:12px; }
+
+/* ===== my products list ===== */
+.productsList{ display:grid; gap:10px; margin-top:10px; }
+.pcard{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+  border-radius:20px;
+  padding:12px;
+  display:grid;
+  grid-template-columns: 64px 1fr auto;
+  gap:12px;
+  align-items:center;
+}
+@media (max-width: 720px){
+  .pcard{ grid-template-columns: 64px 1fr; }
+  .pcard__right{ grid-column: 1 / -1; display:flex; gap:10px; justify-content:space-between; }
+}
+.pcard__img{
+  width:64px; height:64px; border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  overflow:hidden;
+  display:grid; place-items:center;
+  color:rgba(255,255,255,.66);
+  font-size:12px;
+}
+.pcard__img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.pcard__t{ font-weight:950; }
+.pcard__d{ color:rgba(255,255,255,.66); font-size:12px; margin-top:4px; line-height:1.35; }
+.pcard__right{ text-align:right; }
+.pcard__price{ font-weight:950; }
+.pcard__meta{ color:rgba(255,255,255,.62); font-size:12px; margin-top:4px; }
+
+/* ===== modal (settings) ===== */
+.modalOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:grid;
+  place-items:center;
+  padding:16px;
+  z-index:1000;
+}
+.modal{
+  width:min(720px, 100%);
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(18,18,18,.92);
+  box-shadow:0 30px 70px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+html[data-theme="light"] .modal{ background:rgba(255,255,255,.92); }
+
+.modalHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px 14px 10px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.modalTitle{ font-weight:950; font-size:16px; }
+.modalBody{ padding: 12px 14px 14px; }
+
+/* проф-настройки внутри модалки не должны иметь верхнюю линию */
+.modalBody .profEdit{ margin-top:0; border-top:none; padding-top:0; }
+
+
+/* fix: respect hidden attribute for modal overlay */
+.modalOverlay[hidden]{ display:none !important; }
+
+
+
+/* ===== Order timeline + repeat ===== */
+.itemsHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.btnRepeat{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.86);
+  cursor:pointer;
+}
+.btnRepeat:hover{ background:rgba(255,255,255,.08); }
+
+.timeline{
+  margin-top:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  border-radius:18px;
+  padding:12px;
+}
+.timeline__list{ margin-top:8px; display:grid; gap:10px; }
+.timeline__item{ display:grid; grid-template-columns:14px 1fr; gap:10px; align-items:start; }
+.timeline__dot{
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(255,255,255,.35);
+  margin-top:4px;
+  box-shadow:0 0 0 3px rgba(255,255,255,.08);
+}
+.timeline__top{
+  display:flex; justify-content:space-between; gap:10px;
+  font-size:12px;
+}
+.timeline__time{ color:rgba(255,255,255,.60); font-size:11px; }
+.timeline__note{ color:rgba(255,255,255,.70); font-size:12px; margin-top:4px; line-height:1.4; }

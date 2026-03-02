@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market — Вход</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <!-- Header мини -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="На главную">
+        <span class="brand__dot"></span>
+        <span class="brand__name">Market</span>
+      </a>
+
+      <a class="toplink" href="index.html">← На главную</a>
+    </div>
+  </header>
+
+  <main class="container auth">
+
+    <!-- Левая сторона: персонажи -->
+    <section class="auth__left">
+      <div class="stage" id="stage">
+        <div class="stage__hint">
+          Они смотрят. И всё понимают. <span class="muted">Почти.</span>
+        </div>
+
+        <div class="crew" aria-hidden="true">
+          <!-- Dude A -->
+          <div class="dude" id="dudeA">
+            <div class="dude__head">
+              <div class="brow brow--l"></div>
+              <div class="brow brow--r"></div>
+
+              <div class="eye eye--l"><div class="pupil"></div></div>
+              <div class="eye eye--r"><div class="pupil"></div></div>
+
+              <div class="mouth"></div>
+
+              <!-- веки (для пароля) -->
+              <div class="lid lid--l"></div>
+              <div class="lid lid--r"></div>
+            </div>
+            <div class="dude__body"></div>
+          </div>
+
+          <!-- Dude B -->
+          <div class="dude dude--2" id="dudeB">
+            <div class="dude__head">
+              <div class="brow brow--l"></div>
+              <div class="brow brow--r"></div>
+
+              <div class="eye eye--l"><div class="pupil"></div></div>
+              <div class="eye eye--r"><div class="pupil"></div></div>
+
+              <div class="mouth"></div>
+
+              <div class="lid lid--l"></div>
+              <div class="lid lid--r"></div>
+            </div>
+            <div class="dude__body"></div>
+          </div>
+        </div>
+
+        <div class="stage__status" id="statusLine">
+          <span class="dot"></span>
+          <span>Ожидание...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Правая сторона: форма -->
+    <section class="auth__right">
+      <div class="panel">
+        <div class="panel__head">
+          <h1 class="title">Аккаунт</h1>
+          <p class="subtitle">Вход или регистрация — всё в одном месте.</p>
+
+          <div class="tabs" role="tablist">
+            <button class="tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
+              Вход
+            </button>
+            <button class="tab" id="tabRegister" type="button" role="tab" aria-selected="false">
+              Регистрация
+            </button>
+          </div>
+        </div>
+
+        <!-- LOGIN -->
+        <form class="form" id="loginForm" autocomplete="on" novalidate>
+          <div class="field">
+            <label class="label" for="loginId">Логин или email</label>
+            <input class="input" id="loginId" name="loginId" type="text" placeholder="dada@example.com" />
+            <div class="helper">Можно вводить как логин, так и email.</div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="loginPass">Пароль</label>
+            <input class="input" id="loginPass" name="loginPass" type="password" placeholder="••••••••" />
+            <div class="helper" id="loginHelper">Пароль никто не увидит. <span class="muted">Кроме них.</span></div>
+          </div>
+
+          <div class="row">
+            <label class="check">
+              <input type="checkbox" id="rememberMe" />
+              <span>Запомнить</span>
+            </label>
+
+            <button class="link" type="button" id="fakeForgot">Забыли пароль?</button>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Войти</button>
+
+          <div class="note" id="loginMsg" aria-live="polite"></div>
+        </form>
+
+        <!-- REGISTER -->
+        <form class="form" id="registerForm" autocomplete="on" novalidate hidden>
+          <div class="field">
+            <label class="label" for="regName">Имя</label>
+            <input class="input" id="regName" name="regName" type="text" placeholder="Дада" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="regEmail">Email</label>
+            <input class="input" id="regEmail" name="regEmail" type="email" placeholder="dada@example.com" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="regPass">Пароль</label>
+            <input class="input" id="regPass" name="regPass" type="password" placeholder="Минимум 6 символов" />
+            <div class="helper">Подсказка: не делай “123456”. Они расстроятся.</div>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Создать аккаунт</button>
+
+          <div class="note" id="regMsg" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

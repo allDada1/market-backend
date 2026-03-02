@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Оформление</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/checkout.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html"><span class="brand__dot"></span><span class="brand__name">Market</span></a>
+      <div class="topbar__actions">
+        <a class="linkBtn" href="cart.html">Корзина</a>
+        <a class="linkBtn" href="profile.html">Профиль</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container chWrap">
+    <section class="chCard">
+      <div class="chTitle">Оформление</div>
+
+      <div class="field">
+        <div class="label">Город</div>
+        <input class="input" id="city" placeholder="Алматы" />
+      </div>
+
+      <div class="field">
+        <div class="label">Адрес</div>
+        <input class="input" id="address" placeholder="Улица, дом, квартира" />
+      </div>
+
+      <div class="field">
+        <div class="label">Телефон</div>
+        <input class="input" id="phone" placeholder="+7..." />
+      </div>
+
+      <div class="row">
+        <button class="btn btn--primary" id="placeOrderBtn" type="button">Оформить заказ</button>
+        <a class="btn" href="cart.html">Назад</a>
+      </div>
+
+      <div class="msg" id="checkoutMsg"></div>
+    </section>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/checkout-api.js"></script>
+</body>
+</html>

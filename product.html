@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Товар</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+
+<div id="headerMount"></div>
+<div id="subbarMount"></div>
+
+<main class="container pwrap">
+  <nav class="crumbs">
+    <a href="index.html">Главная</a>
+    <span>›</span>
+    <a href="#" id="crumbCat">—</a>
+    <span>›</span>
+    <span id="crumbTitle">—</span>
+  </nav>
+
+  <section class="p">
+    <div class="p__media" id="imgBox">
+      <div class="p__tag" id="tagCat">—</div>
+      <button class="favBtn" id="likeBtn" type="button">
+        <span class="favBtn__icon">♥</span>
+        <span class="favBtn__text" id="likeText">Лайк</span>
+      </button>
+    </div>
+
+    <div class="p__info">
+      <h1 class="p__title" id="title">—</h1>
+      <div class="p__seller">Продавец: <a id="sellerLink" href="#" class="p__sellerLink">—</a></div>
+      <div class="p__desc" id="desc">—</div>
+
+      <div class="ratingBox">
+        <div class="ratingBox__left">
+          <div class="ratingAvg" id="ratingAvg">—</div>
+          <div class="ratingMeta" id="ratingMeta">—</div>
+        </div>
+
+        <div class="ratingStars" id="ratingStars" aria-label="Рейтинг">
+          <!-- stars from JS -->
+        </div>
+      </div>
+
+      <div class="p__buy">
+        <div class="p__price" id="price">—</div>
+
+        <div class="p__btns">
+          <button class="btn btn--primary" id="addBtn" type="button">В корзину</button>
+          <button class="btn" id="buyBtn" type="button">Купить сейчас</button>
+        </div>
+
+        <div class="note" id="noteLine"></div>
+      </div>
+
+      <div class="p__long" id="longText"></div>
+      <div class="specGrid" id="specGrid"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/core/auth.js"></script>
+<script src="js/core/storage.js"></script>
+<script src="js/components/header.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

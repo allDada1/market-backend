@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Избранное</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar__inner topbar__playerok">
+    <a class="brand" href="index.html">
+      <span class="brand__dot"></span>
+      <span class="brand__name">Market</span>
+    </a>
+
+    <div class="topSearch">
+      <input id="searchInput" placeholder="Поиск в избранном..." />
+      <button class="topSearch__clear" id="clearBtn" type="button" title="Очистить">✕</button>
+    </div>
+
+    <div class="topbar__actions">
+      <button class="iconBtn" id="cartBtn" type="button" title="Корзина">
+        🛒 <span class="badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="iconBtn" id="profileBtn" type="button" title="Профиль">
+        👤 <span>Профиль</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero hero--cat">
+    <div>
+      <div class="hero__title">Избранное</div>
+      <div class="hero__sub">Товары, которые ты лайкнул</div>
+      <div class="metaText" id="resultMeta">Товаров: —</div>
+    </div>
+
+    <div class="sortRow">
+      <div class="sortLabel">Сортировка</div>
+      <select class="sortSelect" id="sortSelect">
+        <option value="new_desc">Сначала новые</option>
+        <option value="price_asc">Цена: по возрастанию</option>
+        <option value="price_desc">Цена: по убыванию</option>
+        <option value="likes_desc">По лайкам</option>
+        <option value="rating_desc">По рейтингу</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="grid" id="productsGrid"></section>
+
+  <section class="empty" id="emptyState" hidden>
+    <div class="empty__title">Пока пусто</div>
+    <div class="empty__sub">Поставь лайк на товарах — и они появятся здесь</div>
+    <button class="btn btn--primary" id="goCatalogBtn" type="button">В каталог</button>
+  </section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/favorites-page.js"></script>
+  <script src="js/notifications-ui.js"></script>
+</body>
+</html>

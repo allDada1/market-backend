@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Market — Корзина</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+</head>
+<body>
+  <div id="headerMount"></div>
+  <div id="subbarMount"></div>
+
+  <main class="container cartWrap">
+    <section class="cartCard">
+      <div class="cartTitle">Корзина</div>
+      <div class="cartList" id="cartList"></div>
+
+      <div class="cartBottom">
+        <div class="sumLine">
+          <span>Итого</span>
+          <b id="cartTotal">0 ₸</b>
+        </div>
+
+        <div class="cartBtns">
+          <button class="btn" id="clearCartBtn" type="button">Очистить</button>
+          <button class="btn btn--primary" id="toCheckoutBtn" type="button">К оформлению</button>
+        </div>
+
+        <div class="muted" id="cartNote"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/core/auth.js"></script>
+  <script src="js/core/storage.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/notifications-ui.js"></script>
+</body>
+</html>
