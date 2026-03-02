@@ -1,4 +1,4 @@
-// js/components/header.js
+if (!window.API) window.API = "https://market-backend-if6s.onrender.com";
 // Shared header/subbar renderer + common behaviors.
 // If the page contains <div id="headerMount"></div> and <div id="subbarMount"></div>,
 // this file will inject the standard markup from index.html. Otherwise it will only attach behavior.
