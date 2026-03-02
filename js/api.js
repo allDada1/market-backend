@@ -43,3 +43,8 @@ const MarketAPI = {
     return fetch(url, opt);
   }
 };
+
+// --- алиасы для обратной совместимости (если где-то в коде опечатка) ---
+MarketAPI.apifetch = MarketAPI.apiFetch;
+MarketAPI.api_fetch = MarketAPI.apiFetch;
+window.MarketAPI = MarketAPI;
