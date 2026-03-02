@@ -71,12 +71,22 @@ async function init() {
 
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
 
-  
+
   // 2) “Догоняем” колонки, если таблицы уже были созданы раньше в другом виде
   // users
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS nickname TEXT DEFAULT '';`);
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT DEFAULT '';`);
   await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+// users — догоняем базовые колонки для auth
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS name TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS email TEXT;`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_salt TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS pass_hash TEXT DEFAULT '';`);
+await pool.query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;`);
+
+// уникальность email (если ещё нет)
+await pool.query(`CREATE UNIQUE INDEX IF NOT EXISTS users_email_uq ON users (email);`);
+
 
   // products
   await pool.query(`ALTER TABLE products ADD COLUMN IF NOT EXISTS description TEXT DEFAULT '';`);
