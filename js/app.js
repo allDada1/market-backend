@@ -53,7 +53,7 @@ async function loadLikedIds(){
   likedIds = new Set();
   if (!token()) return;
   try{
-    const res = await MarketAPI.apifetch(window.API + "/api/favorites");
+    const res = await MarketAPI.apiFetch(window.API + "/api/favorites");
     if (!res.ok) return;
     const list = await res.json().catch(()=>[]);
     likedIds = new Set((list||[]).map(p => Number(p.id)).filter(n => Number.isFinite(n)));
@@ -108,7 +108,7 @@ function addToCart(id){
 // -------- auth/menu --------
 async function loadMe(){
   if (!token()) { me = null; updateTopUserUI(); return; }
-  const res = await MarketAPI.apifetch(window.API + "/api/auth/me");
+  const res = await MarketAPI.apiFetch(window.API + "/api/auth/me");
   if (!res.ok){ me = null; updateTopUserUI(); return; }
   const data = await res.json().catch(()=>({}));
   me = data.user || null;
@@ -162,7 +162,7 @@ function renderChips(){
 
 async function apiGetProducts(){
   // всегда грузим список (с лайками/рейтингом)
-  const res = await MarketAPI.apifetch(window.API + "/api/products");
+  const res = await MarketAPI.apiFetch(window.API + "/api/products");
   if (!res.ok) throw new Error("api_products_failed");
   let list = await res.json();
 
@@ -205,7 +205,7 @@ async function apiGetProducts(){
 }
 
 async function apiGetAllProducts(){
-  const res = await MarketAPI.apifetch(window.API + "/api/products");
+  const res = await MarketAPI.apiFetch(window.API + "/api/products");
   if (!res.ok) return [];
   return await res.json();
 }

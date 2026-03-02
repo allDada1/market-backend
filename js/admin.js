@@ -104,7 +104,7 @@ function humanUploadError(msg){
 
 // ===================== AUTH =====================
 async function ensureAdmin() {
-  const r = await MarketAPI.apifetch(window.API + "/api/auth/me");
+  const r = await MarketAPI.apiFetch(window.API + "/api/auth/me");
   if (r.status === 401) {
     location.href = "login.html";
     return false;
@@ -361,7 +361,7 @@ function buildOrdersFromDom(){
 async function saveTileOrder(){
   const orders = buildOrdersFromDom();
   if (!orders.length) return;
-  const r = await MarketAPI.apifetch(window.API + "/api/admin/categories/reorder", {
+  const r = await MarketAPI.apiFetch(window.API + "/api/admin/categories/reorder", {
     method: "POST",
     body: JSON.stringify({ orders })
   });
@@ -412,7 +412,7 @@ function bindTileIconUpload() {
 
 // ===================== TILES =====================
 async function loadTiles() {
-  const r = await MarketAPI.apifetch(window.API + "/api/admin/categories");
+  const r = await MarketAPI.apiFetch(window.API + "/api/admin/categories");
   const d = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(d.error || "tiles_load_failed");
   return d;
@@ -527,7 +527,7 @@ function resolveTileSlug(v){
 
 async function checkSlug(slug, excludeId){
   const q = new URLSearchParams({ slug, exclude_id: String(excludeId||0) });
-  const r = await MarketAPI.apifetch(window.API + "/api/admin/categories/check-slug?" + q.toString());
+  const r = await MarketAPI.apiFetch(window.API + "/api/admin/categories/check-slug?" + q.toString());
   const d = await r.json().catch(()=>({}));
   if (!r.ok) throw new Error(d.error || "check_failed");
   return !!d.available;
@@ -591,7 +591,7 @@ async function saveTile() {
 
 // ===================== PRODUCTS =====================
 async function loadProducts() {
-  const r = await MarketAPI.apifetch(window.API + "/api/products");
+  const r = await MarketAPI.apiFetch(window.API + "/api/products");
   const d = await r.json().catch(() => ([]));
   if (!r.ok) throw new Error("products_load_failed");
   return d;
@@ -750,7 +750,7 @@ async function saveProduct() {
   }
 
   if (editingProductId == null) {
-    const r = await MarketAPI.apifetch(window.API + "/api/products", { method: "POST", body: JSON.stringify(body) });
+    const r = await MarketAPI.apiFetch(window.API + "/api/products", { method: "POST", body: JSON.stringify(body) });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) return setNote(ui.prodNote, "Ошибка: " + (d.error || "unknown"));
 

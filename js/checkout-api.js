@@ -39,7 +39,7 @@ btn?.addEventListener("click", async () => {
     price: 0
   };
 
-  const res = await MarketAPI.apifetch(window.API + "/api/orders", {
+  const res = await MarketAPI.apiFetch(window.API + "/api/orders", {
     method: "POST",
     body: JSON.stringify({ items, delivery, comment: "" })
   });
